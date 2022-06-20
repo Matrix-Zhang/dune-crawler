@@ -8,8 +8,8 @@ pub(crate) struct AddressLabel {
 }
 
 impl AddressLabel {
-    pub(crate) fn address(&self) -> &str {
-        &self.address
+    pub(crate) fn address(&self) -> String {
+        self.address.replace('\\', "0")
     }
 
     pub(crate) fn label_type(&self) -> &str {

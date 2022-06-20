@@ -1,6 +1,4 @@
--- Add migration script here
-DROP TABLE IF EXISTS dune_labels;
-
+-- Add up migration script here
 CREATE TABLE IF NOT EXISTS dune_labels
 (
     id         SERIAL PRIMARY KEY,
@@ -8,4 +6,3 @@ CREATE TABLE IF NOT EXISTS dune_labels
     label_type TEXT     NOT NULL,
     label_name TEXT     NOT NULL
 );
-
