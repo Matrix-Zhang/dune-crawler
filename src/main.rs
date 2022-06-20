@@ -79,7 +79,7 @@ async fn main() -> anyhow::Result<()> {
                 ))
                 .await
             {
-                eprintln!("failed to send a new query, err: {}", err);
+                panic!("failed to send a new query, err: {}", err);
             }
         }
     });
