@@ -43,7 +43,7 @@ impl Debug for QueryTask {
         write!(
             f,
             "type: {}, name: {}, amount: {}",
-            self.label_type, self.name, self.amount
+            self.label_type, self.label_name, self.amount
         )
     }
 }
