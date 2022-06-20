@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use futures_util::{stream::select_all, StreamExt, TryFutureExt};
 use rayon::prelude::*;
 use reqwest::{
@@ -128,6 +130,8 @@ async fn main() -> anyhow::Result<()> {
                     }
                 }
             }
+
+            tokio::time::sleep(Duration::from_secs(180)).await;
         }
 
         if exit {
