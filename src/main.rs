@@ -92,6 +92,7 @@ async fn main() -> anyhow::Result<()> {
     loop {
         match rx.recv().await {
             Some(task) => {
+                println!("new task: {:?}", task);
                 tasks.push(task);
             }
             _ => {

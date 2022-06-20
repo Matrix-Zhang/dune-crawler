@@ -1,4 +1,7 @@
-use std::task::{Context, Poll};
+use std::{
+    fmt::{Debug, Formatter},
+    task::{Context, Poll},
+};
 
 use futures_util::{future::BoxFuture, ready, stream::Stream, TryFutureExt};
 use reqwest::Client;
@@ -33,6 +36,16 @@ pub(crate) struct QueryTask {
     bearer_token: String,
     amount: usize,
     state: QueryTaskState,
+}
+
+impl Debug for QueryTask {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "type: {}, name: {}, amount: {}",
+            self.label_type, self.name, self.amount
+        )
+    }
 }
 
 impl QueryTask {
