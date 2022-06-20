@@ -104,6 +104,7 @@ async fn main() -> anyhow::Result<()> {
                 match res {
                     Ok(data) => match db_pool.begin().await {
                         Ok(mut transaction) => {
+                            let count = data.len();
                             for record in data {
                                 if let Err(err) = sqlx::query!("INSERT INTO dune_labels(address, label_type, label_name) VALUES($1, $2, $3)",
                                     record.address(),
@@ -117,6 +118,7 @@ async fn main() -> anyhow::Result<()> {
                                 }
                             }
                             transaction.commit().await.unwrap();
+                            println!("new labels, count: {}", count);
                         }
                         Err(err) => panic!("failed to get transaction, {:?}", err),
                     },
